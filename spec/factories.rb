@@ -9,7 +9,7 @@ FactoryGirl.define do
       after(:create) do |user|
         5.times do
           lat  = FFaker::Geolocation.lat
-          long =  FFaker::Geolocation.lng
+          long = FFaker::Geolocation.lng
           create(:waypoint, lat: lat, long: long, user: user)
         end
       end
