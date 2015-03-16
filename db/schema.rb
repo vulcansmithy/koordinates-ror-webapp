@@ -18,7 +18,6 @@ ActiveRecord::Schema.define(version: 20150316121309) do
 
   create_table "waypoints", force: :cascade do |t|
     t.decimal  "lat",        precision: 15, scale: 13
-    t.decimal  "decimal",    precision: 15, scale: 13
     t.decimal  "long",       precision: 15, scale: 13
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
