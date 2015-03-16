@@ -1,7 +1,7 @@
 FactoryGirl.define do 
   
   factory :waypoint do
-    lat   48.864716
-    long   2.349014
+    lat   FFaker::Geolocation.lat
+    long  FFaker::Geolocation.lng
   end
 end
