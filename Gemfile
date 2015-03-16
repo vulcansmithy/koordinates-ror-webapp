@@ -42,9 +42,7 @@ group :development, :test do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem "spring"
   
-  gem "rspec-rails", "3.2.1"
-  
-  # https://github.com/michaeldv/awesome_print
+  gem "rspec-rails",   "3.2.1"
   gem "awesome_print", "1.6.1"
 end
 
@@ -55,6 +53,7 @@ end
 # specific gems for the test group
 group :test do
   gem "factory_girl_rails", "4.5.0"
+  gem "database_cleaner",   "1.4.1"
 end  
 
 gem "versionist", "1.4.1"
