@@ -51,6 +51,7 @@ end
 
 # specific gems for the test group
 group :test do
+  gem "factory_girl_rails", "4.5.0"
 end  
 
 gem "versionist", "1.4.1"
