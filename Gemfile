@@ -43,5 +43,5 @@ group :development, :test do
   gem "spring"
 end
 
-gem "versionist"
+gem "versionist", "1.4.1"
 
