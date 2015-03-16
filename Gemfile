@@ -45,6 +45,7 @@ group :development, :test do
   gem "rspec-rails",   "3.2.1"                        # https://github.com/rspec/rspec-rails
   gem "awesome_print", "1.6.1"                        # https://github.com/michaeldv/awesome_print
   gem "ffaker",        "2.0.0"                        # https://github.com/EmmanuelOga/ffaker  
+  gem "guard-rspec",   "4.5.0"                        # https://github.com/guard/guard-rspec
 end
 
 # specific gems for the development group
