@@ -45,5 +45,13 @@ group :development, :test do
   gem "rspec-rails", "3.2.1"
 end
 
+# specific gems for the development group
+group :development do
+end
+
+# specific gems for the test group
+group :test do
+end  
+
 gem "versionist", "1.4.1"
 
