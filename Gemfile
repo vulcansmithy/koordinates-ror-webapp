@@ -43,6 +43,9 @@ group :development, :test do
   gem "spring"
   
   gem "rspec-rails", "3.2.1"
+  
+  # https://github.com/michaeldv/awesome_print
+  gem "awesome_print", "1.6.1"
 end
 
 # specific gems for the development group
