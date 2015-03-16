@@ -4,19 +4,19 @@ Rails.application.routes.draw do
     api_version(
       :module    => "Api::V1", 
       :header    => { :name => "Accept",  :value => "application/vnd.koordinates.vulcansmithy.com; version=1" }, 
-      :parameter => { :name => "version", :value => "1" }, 
-      :path      => { :value  => "v1"  }, 
-      :defaults  => { :format => :json }, 
+      :parameter => { :name => "version", :value => "1"}, 
+      :path      => {:value => "v1"}, 
       :default   => true) do
       
       resource :user, :only => [] do
-         get  "/:user_id/waypoints", to: "user#waypoints"
-         post "/:user_id/waypoints", to: "user#add_waypoints" 
-      end  
+        get  "/:user_id/waypoints", to: "user#waypoints"
+        post "/:user_id/waypoints", to: "user#add_waypoints" 
+      end 
+       
+    end
+  end  
 
-    end  
-  end
-  
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
