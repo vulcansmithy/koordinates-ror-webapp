@@ -57,6 +57,7 @@ end
 group :test do
   gem "factory_girl_rails", "4.5.0"                   # https://github.com/thoughtbot/factory_girl_rails
   gem "database_cleaner",   "1.4.1"                   # https://github.com/DatabaseCleaner/database_cleaner
+  gem "responders",         "2.1.0"                   # https://github.com/plataformatec/responders
 end  
 
 gem "versionist", "1.4.1"                             # https://github.com/bploetz/versionist
