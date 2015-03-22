@@ -1,7 +1,5 @@
 class Api::V1::UserController < Api::V1::BaseController
   
-  respond_to :json
-  
   # == Callbacks ==============================================================
   before_filter :user_parameter_required
   
