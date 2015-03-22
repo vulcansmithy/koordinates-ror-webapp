@@ -60,4 +60,6 @@ group :test do
 end  
 
 gem "versionist", "1.4.1"                             # https://github.com/bploetz/versionist
-
+gem "active_model_serializers",                       # https://github.com/rails-api/active_model_serializers
+  github: "rails-api/active_model_serializers", 
+  branch: "0-9-stable"
