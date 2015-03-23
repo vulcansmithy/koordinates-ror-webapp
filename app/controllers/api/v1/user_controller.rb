@@ -6,33 +6,31 @@ class Api::V1::UserController < Api::V1::BaseController
   # == Instance methods =======================================================
   def waypoints
     unless @user.nil?
-      json_data = ActiveModel::ArraySerializer.new(@user.waypoints, each_serializer: WaypointSerializer).to_json
-      success_response(json_data)
+      success_response(ActiveModel::ArraySerializer.new(@user.waypoints, each_serializer: WaypointSerializer).to_json)
     else
       error_response("Passed 'id' parameter is not associated with any existing user.", :not_found)  
     end
   end
   
   def add_waypoints
-    unless @user.nil?
-      if params[:waypoint].nil?
-        error_response("Error encountered. No waypoint data was posted.", :bad_request)
-      
-      elsif params[:waypoint][:latitude].nil?
-        error_response("'lat' parameter not found. Said parameter is a required parameter.", :bad_request)
-      
-      elsif params[:waypoint][:longitude].nil?
-        error_response("'long' parameter not found. Said parameter is a required parameter.", :bad_request)  
-            
-      else  
-        @user.waypoints << Waypoint.new(params_to_attributes(params[:waypoint], Waypoint.recognized_attributes))
-
-        json_data = WaypointSerializer.new(@user.waypoints.last).as_json 
-        success_response(json_data, :created)
-      end
-    else
+    latitude  = params[:latitude ]
+    longitude = params[:longitude]
+    
+    if @user.nil?
       error_response("User not found.", :not_found)  
-    end      
+
+    elsif latitude.nil?
+      error_response("Error encountered. Missing 'latitude' parameter. Said parameter is a required parameter.",  :bad_request) 
+
+    elsif longitude.nil? 
+      error_response("Error encountered. Missing 'longitude' parameter. Said parameter is a required parameter.", :bad_request)  
+
+    else
+      waypoint = Waypoint.new(params_to_attributes({ latitude: latitude, longitude: longitude }, Waypoint.recognized_attributes))
+      @user.waypoints << waypoint
+
+      success_response(WaypointSerializer.new(waypoint).as_json, :created)
+    end  
   end
   
 end
