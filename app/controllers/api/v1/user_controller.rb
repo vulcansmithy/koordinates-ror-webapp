@@ -15,6 +15,7 @@ class Api::V1::UserController < Api::V1::BaseController
   def add_waypoints
     latitude  = params[:latitude ]
     longitude = params[:longitude]
+    notes     = params[:notes    ]
     
     if @user.nil?
       error_response("User not found.", :not_found)  
@@ -26,7 +27,7 @@ class Api::V1::UserController < Api::V1::BaseController
       error_response("Error encountered. Missing 'longitude' parameter. Said parameter is a required parameter.", :bad_request)  
 
     else
-      waypoint = Waypoint.new(params_to_attributes({ latitude: latitude, longitude: longitude }, Waypoint.recognized_attributes))
+      waypoint = Waypoint.new(params_to_attributes({ latitude: latitude, longitude: longitude, notes: notes }, Waypoint.recognized_attributes))
       @user.waypoints << waypoint
 
       success_response(WaypointSerializer.new(waypoint).as_json, :created)

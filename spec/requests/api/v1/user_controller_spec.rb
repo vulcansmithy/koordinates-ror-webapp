@@ -23,9 +23,12 @@ describe Api::V1::UserController do
     
     latitude  = FFaker::Geolocation.lat
     longitude = FFaker::Geolocation.lng 
-    post "/api/user/#{user.id}/waypoints", { latitude: latitude, longitude: longitude } 
+    notes     = FFaker::Lorem.sentence
+
+    post "/api/user/#{user.id}/waypoints", { latitude: latitude, longitude: longitude, notes: notes } 
     
     expect(response.code).to eq "201"
+    expect(JSON.parse(response.body)["waypoint"]["notes"]).to eql notes
   end
 
 end

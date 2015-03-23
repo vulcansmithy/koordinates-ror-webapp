@@ -9,7 +9,7 @@ class Waypoint < ActiveRecord::Base
   
   # == Class Methods ==========================================================
   def self.recognized_attributes
-    [:latitude, :longitude]
+    [:latitude, :longitude, :notes]
   end
 
 end
