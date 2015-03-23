@@ -1,3 +1,3 @@
 class WaypointSerializer < ActiveModel::Serializer
-  attributes :lat, :long, :created_at
+  attributes :latitude, :longitude, :created_at
 end

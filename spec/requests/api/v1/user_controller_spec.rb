@@ -21,16 +21,16 @@ describe Api::V1::UserController do
     user = FactoryGirl.create :user
     expect(user).not_to be_nil
     
-    lat  = FFaker::Geolocation.lat
-    long = FFaker::Geolocation.lng 
-    post "/api/user/#{user.id}/waypoints", { "waypoint" => { lat: lat, long: long } }
+    latitude  = FFaker::Geolocation.lat
+    longitude = FFaker::Geolocation.lng 
+    post "/api/user/#{user.id}/waypoints", { "waypoint" => { latitude: latitude, longitude: longitude } }
     
     expect(response.code).to eq "201"
-  
-=begin    
-    expect( JSON.parse(response.body)["waypoint"]["lat"    ]).to eq lat
-    expect( JSON.parse(response.body)["waypoint"]["long"   ]).to eq long 
-    expect( JSON.parse(response.body)["waypoint"]["user_id"]).to eq user.id
+
+=begin  
+    expect( JSON.parse(response.body)["waypoint"]["latitude" ]).to eq latitude.to_s
+    expect( JSON.parse(response.body)["waypoint"]["longitude"]).to eq longitude.to_s 
+    expect( JSON.parse(response.body)["waypoint"]["user_id"  ]).to eq user.id
 =end
   end
 

@@ -18,10 +18,10 @@ class Api::V1::UserController < Api::V1::BaseController
       if params[:waypoint].nil?
         error_response("Error encountered. No waypoint data was posted.", :bad_request)
       
-      elsif params[:waypoint][:lat].nil?
+      elsif params[:waypoint][:latitude].nil?
         error_response("'lat' parameter not found. Said parameter is a required parameter.", :bad_request)
       
-      elsif params[:waypoint][:long].nil?
+      elsif params[:waypoint][:longitude].nil?
         error_response("'long' parameter not found. Said parameter is a required parameter.", :bad_request)  
             
       else  

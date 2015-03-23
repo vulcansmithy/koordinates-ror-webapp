@@ -4,12 +4,12 @@ class Waypoint < ActiveRecord::Base
   belongs_to :user
   
   # == Validations ============================================================
-  validates_presence_of :lat,  :on => :create, :message => "can't be blank"
-  validates_presence_of :long, :on => :create, :message => "can't be blank"
+  validates_presence_of :latitude,  :on => :create, :message => "can't be blank"
+  validates_presence_of :longitude, :on => :create, :message => "can't be blank"
   
   # == Class Methods ==========================================================
   def self.recognized_attributes
-    [:lat, :long]
+    [:latitude, :longitude]
   end
 
 end
