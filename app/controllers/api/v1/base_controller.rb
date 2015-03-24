@@ -1,5 +1,7 @@
 class Api::V1::BaseController < ApplicationController
   
+  skip_before_action :verify_authenticity_token
+  
   # == Instance methods =======================================================
   def success_response(data, status_code=:ok)
     render json: data, status: status_code
@@ -25,5 +27,5 @@ class Api::V1::BaseController < ApplicationController
     
     return attributes
   end
-  
+
 end
