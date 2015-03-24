@@ -4,6 +4,11 @@ class Api::V1::UserController < Api::V1::BaseController
   before_filter :user_parameter_required
   
   # == Instance methods =======================================================
+  
+  # GET  /api/user/:user_id/waypoints
+  # GET  /api/user/:user_id/waypoints, {}, { "Accept" => "application/vnd.koordinates.vulcansmithy.com; version=1" }
+  # GET  /api/user/:user_id/waypoints?version=1
+  # GET  /api/v1/user/:user_id/waypoints
   def waypoints
     unless @user.nil?
       success_response(ActiveModel::ArraySerializer.new(@user.waypoints, each_serializer: WaypointSerializer).to_json)
@@ -12,6 +17,10 @@ class Api::V1::UserController < Api::V1::BaseController
     end
   end
   
+  # POST /api/user/:user_id/waypoints
+  # POST /api/user/:user_id/waypoints, {}, { "Accept" => "application/vnd.koordinates.vulcansmithy.com; version=1" }
+  # POST /api/user/:user_id/waypoints?version=1
+  # POST /api/v1/user/:user_id/waypoints
   def add_waypoints
     latitude  = params[:latitude ]
     longitude = params[:longitude]
