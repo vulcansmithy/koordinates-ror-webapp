@@ -1,5 +1,9 @@
 class Api::V1::BaseController < ApplicationController
   
+  # == Constants ==============================================================
+  MISSING_USER_ID_PARAMETER = "Missing 'user_id' parameter. Said parameter is required."
+  
+  # == Callbacks ==============================================================
   skip_before_action :verify_authenticity_token
   
   # == Instance methods =======================================================
@@ -13,7 +17,7 @@ class Api::V1::BaseController < ApplicationController
   
   def user_parameter_required
     if params[:user_id].nil?
-      error_response("Missing 'user_id' parameter. Said parameter is required.", :forbidden)
+      error_response(MISSING_USER_ID_PARAMETER, :forbidden)
     else
       @user = User.where(:id => params[:user_id]).first
     end    
